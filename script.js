@@ -1,164 +1,45 @@
-// general elements
+// box
+const boxLoginForm = document.querySelector(".form__login");
+const boxSignupFormm = document.querySelector(".form__signUp");
+//  login form
+const loginForm = document.getElementById("loginForm");
+const loginEmail = document.getElementById("loginEmail");
+const loginPassword = document.getElementById("loginPassword");
+const loginRemember = document.getElementById("loginRemember");
+// signup form
+const signupForm = document.getElementById("signupForm");
+const signupEmail = document.getElementById("signupEmail");
+const signupPassword = document.getElementById("signupPassword");
+const signupConfirmPassword = document.getElementById("signupConfirmPassword");
+const terms = document.getElementById("terms");
+
+//  links
+const loginLink = document.querySelector(".form__login--link");
+const signupLink = document.querySelector(".form__sign--up");
+
+// password show and hide
 const passShowHide = document.querySelectorAll(".showHide");
-const boxs = document.querySelector(".boxs");
-// _________________________________________________________________
-//_________________________login elements_______________________________
-// _________________________________________________________________
-const loginForm = document.querySelector(".form__login");
-const loginPass = document.querySelector(".login__pass");
-const loginEmail = document.querySelector(".login__email");
-const loginBtn = document.querySelector(".form__login--link");
-const loginSubmit = document.querySelector(".login-btn");
-// _________________________________________________________________
-//___________________signup elements_______________________________
-// _________________________________________________________________
-const signupName = document.querySelector(".signup__name");
-const signupEmail = document.querySelector(".signup__email");
-const signuppass = document.querySelector(".signup__pass");
-const signupConfirm = document.querySelector(".signup__confirm");
-const regBtn = document.querySelector(".reg-btn");
-const logSignUp = document.querySelector(".log__email--input-signup");
-const signupForm = document.querySelector(".form__signUp");
-const signupBtn = document.querySelector(".form__sign--up");
-const password = [loginPass, signuppass, signupConfirm];
-// ________________________________________________________________
-let check = true;
-const arr = [];
 
-// _____functions_________________________________
-
-function showErorSignUp(input, msg) {
-  const partElm = input.parentElement;
-  const small = partElm.querySelector("small");
-  small.textContent = msg;
-  small.classList.add("error");
-}
-function accepted(input) {
-  const partElm = input.parentElement;
-  const small = partElm.querySelector("small");
-  small.classList.remove("error");
-}
-function getmsg(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-function blurInputs() {
-  signupEmail.value = "";
-  signupName.value = "";
-  signuppass.value = "";
-  signupConfirm.value = "";
-}
-function checkRequired(arr) {
-  for (cur of arr) {
-    if (cur.value.trim() === "") {
-      showErorSignUp(cur, `${getmsg(cur)} is required`);
-      check = false;
-      continue;
-    } else {
-      accepted(cur);
-    }
-    if (cur.type === "email") {
-      if (!cur.value.includes("@")) {
-        showErorSignUp(cur, `${getmsg(cur)} must include @`);
-        check = false;
-      } else if (!cur.value.includes(".")) {
-        showErorSignUp(cur, `${getmsg(cur)} must include . like (.com) etc`);
-        check = false;
-      } else if (Number(cur.value[0])) {
-        showErorSignUp(cur, `${getmsg(cur)} must not start with number`);
-        check = false;
-      }
-    }
-  }
-}
-function validDataLogin() {
-  if (
-    loginEmail.value.trim() !== "" &&
-    loginEmail.value.includes(".") &&
-    loginEmail.value.includes("@") &&
-    loginPass.value.length >= 3 &&
-    loginPass.value.length <= 15 &&
-    !Number(loginEmail.value[0])
-  ) {
-    if (loginEmail.value.includes(".") && loginEmail.value.includes("@")) {
-      const str = loginEmail.value.slice(
-        loginEmail.value.indexOf("@") + 1,
-        loginEmail.value.indexOf(".")
-      );
-      if (str.length >= 1) return true;
-    }
-  }
-  return false;
-}
-function validDataSignUp() {
-  if (
-    signupEmail.value.trim() !== "" &&
-    signupEmail.value.includes(".") &&
-    signupEmail.value.includes("@") &&
-    signuppass.value.length >= 3 &&
-    signuppass.value.length <= 15 &&
-    !Number(signupEmail.value[0]) &&
-    signuppass.value === signupConfirm.value
-  ) {
-    console.log("okk");
-    if (signupEmail.value.includes(".") && signupEmail.value.includes("@")) {
-      const str = signupEmail.value.slice(
-        signupEmail.value.indexOf("@") + 1,
-        signupEmail.value.indexOf(".")
-      );
-      if (str.length >= 1) return true;
-    }
-  }
-  console.log("erroe");
-  return false;
-}
-function checkLength(input) {
-  if (input.value.length < 3) {
-    showErorSignUp(input, `${getmsg(input)} length is less than 3`);
-    check = false;
-  } else if (input.value.length > 15) {
-    showErorSignUp(input, `${getmsg(input)} length must be less than 16`);
-    check = false;
-  } else {
-    accepted(input);
-  }
-}
-function checkConfirm(input) {
-  if (input.value !== signuppass.value) {
-    showErorSignUp(input, `${getmsg(input)} is not accurate`);
-    check = false;
-  } else {
-    accepted(input);
-  }
-}
-function validateLogin() {
-  checkLength(loginPass);
-  checkRequired([loginEmail, loginPass]);
-}
-function validateSignUp() {
-  checkLength(signuppass);
-  checkLength(signupName);
-  checkRequired([signupName, signupEmail, signuppass, signupConfirm]);
-  checkConfirm(signupConfirm);
-}
-
-// _____________event listener___________________________
+// _____________________________________________
+// _____________________________________________
+// _____________________________________________
+// _____________________________________________
+// _____________________________________________
 
 // form rotation
-signupBtn.addEventListener("click", (e) => {
+signupLink.addEventListener("click", (e) => {
   e.preventDefault();
-  loginForm.style.transform = "rotateY(180deg)";
-  signupForm.style.transform = "rotateY(0deg)";
-  signupName.focus();
+  boxLoginForm.style.transform = "rotateY(180deg)";
+  boxSignupFormm.style.transform = "rotateY(0deg)";
 });
 // form reverse rotation
-loginBtn.addEventListener("click", (e) => {
+loginLink.addEventListener("click", (e) => {
   e.preventDefault();
-  loginForm.style.transform = "rotateY(0deg)";
-  signupForm.style.transform = "rotateY(-180deg)";
-  loginEmail.focus();
+  boxLoginForm.style.transform = "rotateY(0deg)";
+  boxSignupFormm.style.transform = "rotateY(-180deg)";
 });
-//  show and hide password
 
+//  show and hide password
 passShowHide.forEach((eye) => {
   eye.addEventListener("click", () => {
     const parentEl = eye.parentElement;
@@ -172,34 +53,83 @@ passShowHide.forEach((eye) => {
     }
   });
 });
-// check Login Inputs
-loginSubmit.addEventListener("click", (e) => {
-  e.preventDefault();
-  validateLogin();
-  if (validDataLogin()) {
-    console.log("hello");
-    boxs.style.opacity = "0";
-    boxs.style.visibility = "hidden";
+// make validation to email
+function testEmail(email) {
+  if (!email.value) {
+    alert("Email is required");
+    return false;
+  } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+    alert("Please enter a valid email address");
+    return false;
   }
-});
-// check signUp Inputs
-regBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  validateSignUp();
-  const newobj = {
-    email: signupEmail.value,
-    pass: signuppass.value,
-    name: signupName.value,
-  };
-  if (validDataSignUp()) {
-    arr.push(newobj);
-    console.log(newobj);
-    blurInputs();
-    loginBtn.click();
-    loginEmail.focus();
+  return true;
+}
+// make validation to password
+function testPassword(password) {
+  if (!password.value) {
+    alert("Password is required");
+    return false;
+  } else if (password.value.length < 8) {
+    alert("Password must be at least 8 characters long");
+    return false;
+  } else if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(password.value)) {
+    alert("Password must contain at least one uppercase letter and one number");
+    return false;
   }
-});
+  return true;
+}
+function testRememberMe(terms) {
+  if (!terms.checked) {
+    alert("Please accept the terms and conditions");
+    return false;
+  }
+  return true;
+}
 
-// blur inputs after click then go to login inputs
-// change colors // remove repeated code
-//
+function testConfirmPassowrd(signupConfirmPassword, signupPassword) {
+  if (signupConfirmPassword.value !== signupPassword.value) {
+    alert("Passwords don't match");
+    return false;
+  }
+  return true;
+}
+function formValidation(
+  form,
+  email,
+  password,
+  confirm = 1,
+  terms = 1,
+  signup = true
+) {
+  // check email
+  if (!testEmail(email)) return false;
+  // check password
+  if (!testPassword(password)) return false;
+
+  // if it is a signup form
+  if (signup) {
+    //check confirm password
+    if (!testConfirmPassowrd(confirm, password)) return false;
+    // check terms
+    if (!testRememberMe(terms)) return false;
+  }
+  // reset inputs
+  form.reset();
+  alert("Have a Good Day MY Friend");
+}
+
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  formValidation(loginForm, loginEmail, loginPassword, 1, 1, false);
+});
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  formValidation(
+    signupForm,
+    signupEmail,
+    signupPassword,
+    signupConfirmPassword,
+    terms,
+    true
+  );
+});

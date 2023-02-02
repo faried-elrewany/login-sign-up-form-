@@ -194,10 +194,10 @@ small {
   left: 0;
   opacity: 0;
 }
-.error {
+/* .error {
   opacity: 1 !important;
   color: red;
-}
+} */
 button:active {
   background-color: var(--darkBlue);
   transform: translateY(-0.2rem);

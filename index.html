@@ -11,18 +11,19 @@
     <div class="boxs">
       <div class="forms form__login">
         <h2>Login</h2>
-        <form class="form1">
+        <form class="form1" id="loginForm">
           <div class="log__email log__box">
             <input
               type="email"
-              pattern="[a-zA-z0-9-+._]+@[a-zA-z0-9-+._]+\.[a-z]{2,}"
               class="login__email input-style"
-              placeholder="Email Address"
-              id="Email Address"
+              placeholder="email@gmail.com"
+              id="loginEmail"
               required
             />
             <ion-icon class="i" name="mail-outline"></ion-icon>
-            <small class="form__login-email--error">error message</small>
+            <small class="form__login-email--error" id="loginEmailErr"
+              >error message</small
+            >
           </div>
           <div class="log__pass log__box">
             <input
@@ -30,24 +31,30 @@
               class="login__pass input-style"
               placeholder="Password"
               required
-              id="passwords"
+              id="loginPassword"
               value=""
             />
             <ion-icon class="i" name="lock-closed-outline"></ion-icon>
             <ion-icon class="eye showHide" name="eye-off-outline"></ion-icon>
-            <small class="form__login-pass--error">error message</small>
+            <small class="form__login-pass--error" id="loginPassErr"
+              >error message</small
+            >
           </div>
           <div class="log__remember log__box">
             <input
               type="checkbox"
               class="log__remember--input"
-              id="log--remember"
+              id="loginRemember"
             />
             <label for="log--remember">Remember me</label>
-            <small class="form__login-remember--error">error message</small>
+            <small class="form__login-remember--error" id="loginREmemberErr"
+              >error message</small
+            >
           </div>
 
-          <button class="login-btn" type="submit">Login Now</button>
+          <button class="login-btn" type="submit" id="loginSubmit">
+            Login Now
+          </button>
 
           <div class="form__text">
             <p>not a member ?</p>
@@ -59,7 +66,7 @@
       <div class="forms form__signUp">
         <h2>regestration</h2>
 
-        <form class="form2">
+        <form class="form2" id="signupForm">
           <div class="log__name log__box">
             <input
               type="text"
@@ -69,19 +76,16 @@
               id="Username"
             />
             <ion-icon class="i" name="person-outline"></ion-icon>
-            <small class="form__signUp-name--error">error message</small>
           </div>
           <div class="log__email log__box">
             <input
               type="email"
-              pattern="[a-zA-z0-9-+._]+@[a-zA-z0-9-+._]+\.[a-z]{2,}"
               class="signup__email log__email--reg input-style"
               placeholder="Email Address"
               required
-              id="Email"
+              id="signupEmail"
             />
             <ion-icon class="i" name="mail-outline"></ion-icon>
-            <small class="form__signUp-email--error">error message</small>
           </div>
           <div class="log__pass log__box">
             <input
@@ -89,10 +93,9 @@
               class="signup__pass input-style"
               placeholder="Password"
               required
-              id="Password"
+              id="signupPassword"
             />
             <ion-icon class="i" name="lock-closed-outline"></ion-icon>
-            <small class="form__signUp-pass--error">error message</small>
           </div>
           <div class="log__pass log__box">
             <input
@@ -100,23 +103,19 @@
               class="signup__confirm log__confirm--reg input-style"
               placeholder="confirm Password"
               required
-              id="Confirm Password"
+              id="signupConfirmPassword"
             />
             <ion-icon class="i" name="lock-closed-outline"></ion-icon>
             <ion-icon class="eye showHide" name="eye-off-outline"></ion-icon>
-            <small class="form__signUp-confirm--error">error message</small>
           </div>
           <div class="log__remember log__box">
-            <input
-              type="checkbox"
-              class="log__accept--input"
-              id="log--accept"
-            />
+            <input type="checkbox" class="log__accept--input" id="terms" />
             <label for="log--accept">I Accept the terms & conditions</label>
-            <small class="form__signUp-accept--error">error message</small>
           </div>
 
-          <button class="reg-btn" type="submit">Register Now</button>
+          <button class="reg-btn" type="submit" id="signupBtn">
+            Register Now
+          </button>
 
           <div class="form__text">
             <p>already have an Account ?</p>
